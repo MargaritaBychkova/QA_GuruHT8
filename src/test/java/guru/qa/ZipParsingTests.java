@@ -11,6 +11,7 @@ import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Test;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -44,4 +45,14 @@ public class ZipParsingTests {
             }
         }
     }
+    @Test
+void jsonTest () throws Exception {
+        Gson gson = new Gson();
+        try (InputStream is = classLoader.getResourceAsStream("simple.json")) {
+            String json = new String (is.readAllBytes(), StandardCharsets.UTF_8);
+            JsonObject jsonObject = gson.fromJson(json,JsonObject.class);
+            assertThat(jsonObject.get("from").getAsString()).isEqualTo("Saint-Petersburg");
+        }
     }
+}
+

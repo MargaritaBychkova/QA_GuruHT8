@@ -1,0 +1,9 @@
+{
+  "from": "Saint-Petersburg",
+  "to":  "Moscow",
+  "actions": {
+    "day 1": "Job",
+    "day 2": "MeetUp",
+    "day 3": "Day off"
+  }
+}
